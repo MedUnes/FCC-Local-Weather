@@ -10,6 +10,10 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+.row
+{
+	margin-right:0px;
+}
 #header
 {
   background-color:#000;
