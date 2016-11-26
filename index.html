@@ -1,0 +1,131 @@
+<html lang="fr">
+	<head>
+		<title>Management System Productivity</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- ------------------------------------ -->
+		<!-- STYLESHEETS -->
+		<!-- ------------------------------------ -->
+		
+		
+		<!-- BOOTSTRAP 3.3.6 STYLESHEET -->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+		
+		<!-- FONTAWESOME 4.6.3 STYLESHEET -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		
+		<!-- WEATHER ICONS  STYLESHEET -->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"/>
+		
+		<!-- LOCAL WEATHER STYLESHEET -->
+		<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+
+	
+	</head>
+	<body>
+		<div class="container-full">
+			<div class="row" id="header">
+				<div id="left-header" class="col-xs-12 col-sm-6 col-md-4 text-center">
+					<div id="locationField">
+					<input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input></div>
+					<i class="fa fa-map-marker fa-4x"></i> <span class="city"></span>
+					<span class="country"></span>
+					<div id="weather" class="row text-center">
+						<span id="font-icon"></span>
+						<span id="temperature"></span>
+					</div>
+				</div>
+				
+				<div id="front-header" class="col-xs-12 col-sm-6 col-md-4">
+					<h1 class="text-center">Local Weather</h1>
+					<h4 class="text-center">by <a href="http://www.medunes.net" target="_blank">medunes <i class="fa fa-external-link"></i></a></h4>
+					<div class="row text-center">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-danger active">
+								<input type="radio" name="tempUnit" id="celsius" autocomplete="off" checked>Celsius
+							</label>
+							<label class="btn btn-primary">
+								<input type="radio" name="tempUnit" id="fahrenheit" autocomplete="off">Fahrenheit
+							</label>
+						</div>
+					</div>
+				</div>
+				<div id="right-header" class="text-center col-xs-12  col-sm-6 col-md-4">
+					<div class="full-date"></div>
+					<div class="date">
+						<div class="month"></div>
+						<div class="day"></div>
+						<div class="year"></div>
+					</div>
+					<div class="full-time"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var placeSearch, autocomplete;
+			var initAutocomplete=function()
+			{
+				autocomplete = new google.maps.places.Autocomplete(
+				/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+					{types: ['geocode']});
+					autocomplete.addListener('place_changed', fillInAddress);
+				}
+				var geolocate=function () 
+				{
+					if (navigator.geolocation) 
+					{
+						navigator.geolocation.getCurrentPosition(function(position)
+						{
+							var geolocation = 
+							{
+								lat: position.coords.latitude,
+								lng: position.coords.longitude
+							};
+							var circle = new google.maps.Circle(
+							{
+								center: geolocation,
+								radius: position.coords.accuracy
+							});
+							autocomplete.setBounds(circle.getBounds());
+						});
+					}
+				}
+				var fillInAddress=function()
+				{	
+					var place = autocomplete.getPlace();
+					var coords=autocomplete.getPlace().geometry.location;
+					lat=coords.lat();
+					lon=coords.lng();
+					utcOffset=place.utc_offset;
+					city=place.address_components[0].short_name;
+					if (typeof place.address_components[3] !== 'undefined' && place.address_components[3])
+					{
+						country=place.address_components[3].long_name;
+					}
+					else
+					{
+						country=place.address_components[2].long_name;
+					}
+					console.log('city: '+city);
+					console.log('country: '+country);
+					console.log('Temperature: '+tempCelsius+' '+tempFahrenheit);
+					console.log('font-icon: '+icon);
+					updateState();
+				}
+			</script>
+			
+			<!-- Google MAPS -->
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZrZqoOHm-4CVBfIDhYVNW7K29P9DxP6M&libraries=places&callback=initAutocomplete&language=en" async defer></script>
+			
+			<!-- jQuery -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			
+			<!-- BOOTSTRAP  -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			
+			<!-- Local Weather  -->
+			<script type="text/javascript" src="script.js"></script>
+
+		</body>
+</html>		

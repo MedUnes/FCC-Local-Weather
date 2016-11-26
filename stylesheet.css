@@ -1,0 +1,136 @@
+
+@import url('https://fonts.googleapis.com/css?family=Krona+One');
+@import url('https://fonts.googleapis.com/css?family=Heebo:100,300,800');
+@import url('https://fonts.googleapis.com/css?family=Arvo:400,700');
+
+body { 
+  background: url('http://static.panoramio.com/photos/large/6840877.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#header
+{
+  background-color:#000;
+  color:#fff;
+  opacity:0.7;
+  filter:alpha(opacity=0.9);
+  padding-top:64px;
+  padding-bottom:40px;
+  font-family: 'Krona One', cursive;
+}
+
+#header a
+{
+ color:#f2af00;
+}
+#front-header
+{
+  border-left:yellow 1px solid;
+  border-right:yellow 1px solid;
+}
+#left-header,#front-header
+{
+  padding-top:100px;
+  padding-bottom:100px;
+}
+#right-header
+{
+color:#f2af00;
+font-family: 'Heebo', sans-serif;
+}
+.full-date,.date,.full-time
+{
+  width:150px;
+  height:150px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-top:15px;
+  /*border:1px solid #ffcc00;*/
+  color:#ffdd00;
+  background-color:#440;
+}
+.full-date
+{
+  font-size:26px;
+  font-weight:100;
+  width:auto;
+  height:70px;
+  border-bottom:none;
+  background-color:#000;
+  color:#eee;
+}
+.full-time
+{
+  font-size:38px;
+  font-weight:400;
+  font-style:'Arvo';
+  width:150px;
+  height:70px;
+border:none;
+  margin-top:7px !important;
+  background-color:#bb0;
+  color:#000;
+}
+.day,.month,.year
+{
+  line-height:1;
+}
+.date .day
+{
+  font-weight:900;
+  font-size:64px; 
+}
+.date .month
+{
+  font-weight:300;
+  font-size:28px;
+}
+.date .year
+{
+font-weight:100;
+font-size:28px;
+}
+.city
+{
+color:#f90;
+font-family: 'Heebo', sans-serif;
+font-size:42px;
+font-weight:100;
+}
+#left-header i
+{
+  color:#900;
+  margin-right:16px;
+}
+.country
+{
+color:#fff;
+font-family: 'Heebo', sans-serif;
+font-size:28px;
+  font-weight:100;
+}
+#autocomplete
+{
+  margin-top:-24px;
+  margin-bottom:24px;
+  color:#000;
+  width:80%;
+  height:40px;
+}
+#font-icon
+{
+  font-size:72px;
+  color:#aac;
+  padding-top:26px;
+  margin-right:18px;
+}
+#temperature
+{
+  font-size:72px;
+  font-family:'Heebo';
+  font-weight:600;
+  color:#a00;
+  padding-top:26px;
+}
