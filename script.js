@@ -378,6 +378,7 @@ var lon='10.5504127';
 var utcOffset=60;
 var fullTime='';
 var fullDate='';
+
 /*********/
 var monthNames = ["Jan", "Feb", "Mar", 
 "Apr", "May", "Jun", "Jul", "Aug", "Sep", 
@@ -396,7 +397,14 @@ $('.full-date').html(fullDate);
 $('.month').html(monthNames[currMonth]);
 $('.day').html(currDay);
 $('.year').html(currYear);
-}
+};
+$.getJSON('http://ip-api.com/json',function(resp){
+  lat=resp.lat;
+  lon=resp.lon;
+  city=resp.city;
+  country=resp.country;
+$('.city').html(city);
+$('.country').html(country);});
 var updateWeather=function()
 {
   var openWeatherReq='http://api.openweathermap.org/data/2.5/weather?'
