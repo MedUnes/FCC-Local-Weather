@@ -368,14 +368,14 @@
 };
 
 var openWeatherKey='34338c626bdcbae349f3ecaac274863d';
-var city='Sousse';
-var country='Tunisia';
+var city='';
+var country='';
 var tempCelsius='';
 var tempFahrenheit='';
 var icon='';
-var lat='35.8293242';
-var lon='10.5504127';
-var utcOffset=60;
+var lat='';
+var lon='';
+var utcOffset=0;
 var fullTime='';
 var fullDate='';
 
@@ -404,7 +404,9 @@ $.getJSON('http://ip-api.com/json',function(resp){
   city=resp.city;
   country=resp.country;
 $('.city').html(city);
-$('.country').html(country);});
+$('.country').html(country);
+ updateWeather();
+});
 var updateWeather=function()
 {
   var openWeatherReq='http://api.openweathermap.org/data/2.5/weather?'
